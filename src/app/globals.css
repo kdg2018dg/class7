@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+:root {
+  /* 7반 학급 운영센터 — 디자인 토큰 */
+  --color-canvas: #f6f7fb;      /* 은은한 블루그레이 배경 */
+  --color-surface: #ffffff;     /* 카드 표면 */
+  --color-ink: #14161f;         /* 본문 텍스트 */
+  --color-ink-soft: #5c6072;    /* 보조 텍스트 */
+  --color-line: #e7e9f2;        /* 구분선 / 보더 */
+
+  --color-brand: #3d4bff;       /* 메인 포인트 컬러 — 확신 있는 인디고 */
+  --color-brand-ink: #ffffff;
+  --color-brand-soft: #edeeff;  /* 브랜드 컬러의 옅은 배경톤 */
+
+  --color-gold: #f5a623;        /* 1~3위 강조 (앰버) */
+  --color-mint: #16a374;        /* 증가/성장 지표 */
+  --color-rose: #e35a5a;        /* 경고/반려 (공격적이지 않은 톤으로 제한 사용) */
+
+  --radius-card: 20px;
+  --radius-pill: 999px;
+  --shadow-card: 0 1px 2px rgba(20, 22, 31, 0.04), 0 8px 24px -12px rgba(20, 22, 31, 0.12);
+}
+
+@theme inline {
+  --color-canvas: var(--color-canvas);
+  --color-surface: var(--color-surface);
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-line: var(--color-line);
+  --color-brand: var(--color-brand);
+  --color-brand-ink: var(--color-brand-ink);
+  --color-brand-soft: var(--color-brand-soft);
+  --color-gold: var(--color-gold);
+  --color-mint: var(--color-mint);
+  --color-rose: var(--color-rose);
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, system-ui, sans-serif;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* 큰 숫자 타이포 — 카드 내 핵심 지표용 */
+.stat-figure {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+/* 키보드 포커스 표시 (접근성) */
+:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* 폼/버튼 공통 유틸리티 — 모바일에서 손가락으로 누르기 충분한 크기(최소 44px) 유지 */
+.input {
+  width: 100%;
+  min-height: 48px;
+  border-radius: 14px;
+  border: 1px solid var(--color-line);
+  background: var(--color-surface);
+  padding: 0 14px;
+  font-size: 16px;
+  color: var(--color-ink);
+}
+.input:focus {
+  border-color: var(--color-brand);
+}
+textarea.input {
+  min-height: 96px;
+  padding: 12px 14px;
+  resize: vertical;
+}
+
+.btn-primary {
+  min-height: 50px;
+  border-radius: 14px;
+  background: var(--color-brand);
+  color: var(--color-brand-ink);
+  font-weight: 700;
+  font-size: 15px;
+  transition: opacity 0.15s ease;
+}
+.btn-primary:active {
+  opacity: 0.85;
+}
+.btn-primary:disabled {
+  opacity: 0.5;
+}
+
+.btn-secondary {
+  min-height: 50px;
+  border-radius: 14px;
+  background: var(--color-brand-soft);
+  color: var(--color-brand);
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.btn-ghost {
+  min-height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--color-line);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-weight: 600;
+  font-size: 14px;
+}
